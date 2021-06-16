@@ -21,6 +21,7 @@ window.addEventListener("keydown", function (event) {
 })
 
 function guessNumber() {
+    if (gameWon) return
     guessedNumber = parseInt(guessInput.value)
     guessInput.value = ""
 
@@ -56,12 +57,13 @@ function guessNumber() {
 
 
 function startGame() {
+    guessInput.value = ""
     numbersGuessed = []
     guessCount = 0
     getRandomNum()
     message.innerText = "Guess a number between 1 and 100."
     console.log(`Random Number:  ${randomNumber}`)
-    var gameWon = false
+    gameWon = false
 }
 
 const getRandomNum = () => {
