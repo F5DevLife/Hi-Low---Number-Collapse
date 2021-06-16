@@ -14,8 +14,8 @@ var numbersGuessed = []
 
 //Event Listeners
 guessButton.addEventListener("click", guessNumber)
-window.addEventListener("keydown", function(event) {
-    if (event.keyCode == "13") {guessNumber()}
+window.addEventListener("keydown", function (event) {
+    if (event.keyCode == "13") { guessNumber() }
 })
 
 function guessNumber() {
@@ -25,7 +25,7 @@ function guessNumber() {
     if (numbersGuessed.includes(guessedNumber)) {
         message.innerText = `You already guessed ${guessedNumber}. Try another number.`
         return
-        }
+    }
     numbersGuessed.push(guessedNumber)
 
     if (isInRange()) {
