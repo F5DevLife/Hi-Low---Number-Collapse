@@ -22,17 +22,11 @@ function guessNumber() {
     guessedNumber = parseInt(guessInput.value)
     guessInput.value = ""
 
-    console.log(`Guessed:  ${guessedNumber}`)
-    console.log(`Data Type: ${typeof guessedNumber}`)
-    console.log(`In Range:  ${isInRange()}`)
-
     if (numbersGuessed.includes(guessedNumber)) {
-        console.log("already guessed")
+        message.innerText = `You already guessed ${guessedNumber}. Try another number.`
         return
         }
     numbersGuessed.push(guessedNumber)
-    console.log(numbersGuessed)
-
 
     if (isInRange()) {
         if (guessedNumber == randomNumber) {
@@ -52,9 +46,7 @@ function guessNumber() {
         guessInput.setAttribute("max", maxNumber)
         guessInput.value = ""
     }
-
 }
-
 
 const startGame = () => {
     numbersGuessed = []
