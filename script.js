@@ -11,7 +11,6 @@ var gameWon = false
 var numbersGuessed = []
 
 
-
 //Event Listeners
 guessButton.addEventListener("click", guessNumber)
 window.addEventListener("keydown", function (event) {
@@ -22,31 +21,35 @@ function guessNumber() {
     guessedNumber = parseInt(guessInput.value)
     guessInput.value = ""
 
+    if (!isInRange()) {
+        message.innerText = `Make sure you guess a number between ${minNumber} and ${maxNumber}.`
+        return
+    }
+
     if (numbersGuessed.includes(guessedNumber)) {
         message.innerText = `You already guessed ${guessedNumber}. Try another number.`
         return
     }
     numbersGuessed.push(guessedNumber)
 
-    if (isInRange()) {
-        if (guessedNumber == randomNumber) {
-            message.innerText = "You won!"
-            gameWon = true
-        } else if (guessedNumber > minNumber && guessedNumber < randomNumber) {
-            minNumber = guessedNumber
+    if (guessedNumber == randomNumber) {
+        message.innerText = "You won!"
+        gameWon = true
+    } else if (guessedNumber > minNumber && guessedNumber < randomNumber) {
+        minNumber = guessedNumber
 
-        } else {
-            maxNumber = guessedNumber
-        }
-        if (!gameWon) {
-            message.innerText = `Guess a number between ${minNumber} and ${maxNumber}.`
-        }
-
-        guessInput.setAttribute("min", minNumber)
-        guessInput.setAttribute("max", maxNumber)
-        guessInput.value = ""
+    } else {
+        maxNumber = guessedNumber
     }
+    if (!gameWon) {
+        message.innerText = `Guess a number between ${minNumber} and ${maxNumber}.`
+    }
+
+    guessInput.setAttribute("min", minNumber)
+    guessInput.setAttribute("max", maxNumber)
+    guessInput.value = ""
 }
+
 
 const startGame = () => {
     numbersGuessed = []
@@ -64,7 +67,7 @@ const collapseNumRange = () => {
 
 }
 
-const isInRange = () => {
+function isInRange() {
     if (guessedNumber >= minNumber && guessedNumber <= maxNumber) {
         return true
     }
