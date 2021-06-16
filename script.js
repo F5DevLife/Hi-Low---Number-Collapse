@@ -3,16 +3,19 @@ const QS = (q) => document.querySelector(q)
 var message = QS("#message")
 const guessInput = QS("#guessInput")
 const guessButton = QS("#guessButton")
+const restartButton = QS("#restartButton")
 var minNumber = 1
 var maxNumber = 100
 var randomNumber
 var guessedNumber
 var gameWon = false
 var numbersGuessed = []
+var guessCount = 0
 
 
 //Event Listeners
 guessButton.addEventListener("click", guessNumber)
+restartButton.addEventListener("click", startGame)
 window.addEventListener("keydown", function (event) {
     if (event.keyCode == "13") { guessNumber() }
 })
@@ -31,9 +34,10 @@ function guessNumber() {
         return
     }
     numbersGuessed.push(guessedNumber)
+    guessCount++
 
     if (guessedNumber == randomNumber) {
-        message.innerText = "You won!"
+        message.innerText = `You won! It took you only ${guessCount} guesses.`
         gameWon = true
     } else if (guessedNumber > minNumber && guessedNumber < randomNumber) {
         minNumber = guessedNumber
@@ -51,8 +55,9 @@ function guessNumber() {
 }
 
 
-const startGame = () => {
+function startGame() {
     numbersGuessed = []
+    guessCount = 0
     getRandomNum()
     message.innerText = "Guess a number between 1 and 100."
     console.log(`Random Number:  ${randomNumber}`)
