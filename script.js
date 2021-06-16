@@ -26,6 +26,14 @@ function guessNumber() {
     console.log(`Data Type: ${typeof guessedNumber}`)
     console.log(`In Range:  ${isInRange()}`)
 
+    if (numbersGuessed.includes(guessedNumber)) {
+        console.log("already guessed")
+        return
+        }
+    numbersGuessed.push(guessedNumber)
+    console.log(numbersGuessed)
+
+
     if (isInRange()) {
         if (guessedNumber == randomNumber) {
             message.innerText = "You won!"
@@ -49,6 +57,7 @@ function guessNumber() {
 
 
 const startGame = () => {
+    numbersGuessed = []
     getRandomNum()
     message.innerText = "Guess a number between 1 and 100."
     console.log(`Random Number:  ${randomNumber}`)
