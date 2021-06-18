@@ -40,7 +40,7 @@ function guessNumber() {
     if (guessedNumber == randomNumber) {
         message.innerText = `You won! It took you only ${guessCount} guesses.`
         gameWon = true
-    } else if (guessedNumber > minNumber && guessedNumber < randomNumber) {
+    } else if (guessedNumber >= minNumber && guessedNumber < randomNumber) {
         minNumber = guessedNumber
 
     } else {
@@ -57,6 +57,10 @@ function guessNumber() {
 
 
 function startGame() {
+    minNumber = 1
+    maxNumber = 100
+    guessInput.setAttribute("min", minNumber)
+    guessInput.setAttribute("max", maxNumber)
     guessInput.value = ""
     numbersGuessed = []
     guessCount = 0
