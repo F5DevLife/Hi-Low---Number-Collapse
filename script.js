@@ -40,19 +40,14 @@ function guessNumber() {
     if (guessedNumber == randomNumber) {
         message.innerText = `You won! It took you only ${guessCount} guesses.`
         gameWon = true
-    } else if (guessedNumber >= minNumber && guessedNumber < randomNumber) {
-        minNumber = guessedNumber
+    } else collapseNumRange()
 
-    } else {
-        maxNumber = guessedNumber
-    }
     if (!gameWon) {
         message.innerText = `Guess a number between ${minNumber} and ${maxNumber}.`
     }
 
     guessInput.setAttribute("min", minNumber)
     guessInput.setAttribute("max", maxNumber)
-    guessInput.value = ""
 }
 
 
@@ -75,7 +70,12 @@ const getRandomNum = () => {
 }
 
 const collapseNumRange = () => {
-
+    if (guessedNumber >= minNumber && guessedNumber < randomNumber) {
+        minNumbere = guessedNumber
+    }
+    else {
+        maxNumber = guessedNumber
+    }
 }
 
 function isInRange() {
