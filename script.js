@@ -59,12 +59,16 @@ function startGame() {
     guessCount = 0
     getRandomNum()
     message.innerText = "Guess a number between 1 and 100."
-    console.log(`Random Number:  ${randomNumber}`)
     gameWon = false
+}
+
+function resetVariables() {
+
 }
 
 const getRandomNum = () => {
     randomNumber = Math.ceil(Math.random() * 100)
+    console.log(`Random Number:  ${randomNumber}`)
 }
 
 const collapseNumRange = () => {
