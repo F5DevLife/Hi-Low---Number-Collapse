@@ -9,8 +9,11 @@ var maxNumber = 100
 var randomNumber
 var guessedNumber
 var gameWon = false
+var gameOver = false
 var numbersGuessed = []
 var guessCount = 0
+const MAXTRIES = 5
+var triesRemaining = MAXTRIES
 
 
 //Event Listeners
@@ -21,7 +24,8 @@ window.addEventListener("keydown", function (event) {
 })
 
 function guessNumber() {
-    if (gameWon) return
+    if (gameWon || gameOver) return
+
     guessedNumber = parseInt(guessInput.value)
     guessInput.value = ""
 
@@ -36,6 +40,15 @@ function guessNumber() {
     }
     numbersGuessed.push(guessedNumber)
     guessCount++
+    triesRemaining = MAXTRIES - guessCount
+
+    console.log(`triesRemaining:  ${triesRemaining}`)
+    console.log(`guessCount:  ${guessCount}`)
+    if (triesRemaining <= 0) {
+        message.innerText = `You lost. You could not guess the number within ${MAXTRIES} tries.`
+        gameOver = true
+        return
+    }
 
     if (guessedNumber == randomNumber) {
         message.innerText = `You won! It took you only ${guessCount} guesses.`
@@ -43,7 +56,7 @@ function guessNumber() {
     } else collapseNumRange()
 
     if (!gameWon) {
-        message.innerText = `Guess a number between ${minNumber} and ${maxNumber}.`
+        message.innerText = `Guess a number between ${minNumber} and ${maxNumber}. You have ${triesRemaining} tries remaining.`
         guessInput.setAttribute("min", minNumber)
         guessInput.setAttribute("max", maxNumber)
     }
@@ -60,6 +73,8 @@ function startGame() {
     getRandomNum()
     message.innerText = "Guess a number between 1 and 100."
     gameWon = false
+    gameOver = false
+    triesRemaining = MAXTRIES
 }
 
 function resetVariables() {
