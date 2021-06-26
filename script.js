@@ -38,22 +38,21 @@ function guessNumber() {
         message.innerText = `You already guessed ${guessedNumber}. Try another number.`
         return
     }
+
     numbersGuessed.push(guessedNumber)
     guessCount++
     triesRemaining = MAXTRIES - guessCount
-
-    console.log(`triesRemaining:  ${triesRemaining}`)
-    console.log(`guessCount:  ${guessCount}`)
-    if (triesRemaining <= 0) {
-        message.innerText = `You lost. You could not guess the number within ${MAXTRIES} tries.`
-        gameOver = true
-        return
-    }
 
     if (guessedNumber == randomNumber) {
         message.innerText = `You won! It took you only ${guessCount} guesses.`
         gameWon = true
     } else collapseNumRange()
+
+    if (triesRemaining <= 0 && !gameWon) {
+        message.innerText = `You lost. You could not guess the number within ${MAXTRIES} tries.`
+        gameOver = true
+        return
+    }
 
     if (!gameWon) {
         message.innerText = `Guess a number between ${minNumber} and ${maxNumber}. You have ${triesRemaining} tries remaining.`
