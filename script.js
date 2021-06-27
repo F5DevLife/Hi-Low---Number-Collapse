@@ -12,7 +12,7 @@ var gameWon = false
 var gameOver = false
 var numbersGuessed = []
 var guessCount = 0
-const MAXTRIES = 5
+const MAXTRIES = 10
 var triesRemaining = MAXTRIES
 
 
