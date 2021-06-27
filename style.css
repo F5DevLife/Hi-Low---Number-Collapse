@@ -1,3 +1,13 @@
 body {
-    background-color: lightgray
+    background-color: rgb(200, 200, 200)
+}
+
+button {
+    background-color: rgb(44, 66, 99);
+    color: rgb(200, 200, 200)
+}
+
+button:active{
+    background-color: rgba(50, 75, 125, .5);
+    color: black;
 }
