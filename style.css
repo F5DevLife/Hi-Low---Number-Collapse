@@ -9,5 +9,4 @@ button {
 
 button:active{
     background-color: rgba(50, 75, 125, .5);
-    color: black;
 }
