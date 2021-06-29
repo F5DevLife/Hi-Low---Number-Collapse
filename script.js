@@ -1,6 +1,7 @@
 const QS = (q) => document.querySelector(q)
 
 var message = QS("#message")
+var specialMessage = QS("#specialMessage")
 const guessInput = QS("#guessInput")
 const guessButton = QS("#guessButton")
 const restartButton = QS("#restartButton")
@@ -33,9 +34,11 @@ function startGame() {
     guessCount = 0
     getRandomNum()
     message.innerText = "Guess a number between 1 and 100."
+    document.getElementById("specialMessage").innerText = ""
     gameWon = false
     gameOver = false
     triesRemaining = MAXTRIES
+    guessButton.style.display = "initial"
 }
 
 function guessNumber() {
@@ -60,8 +63,9 @@ function guessNumber() {
 
     if (guessedNumber == randomNumber) {
         message.innerText = `You won! It took you only ${guessCount} guesses.`
+        specialMessage.innerText = "My daughters are my favorite beta testers! I love my daughters!!!"
         gameWon = true
-        insertSpecialMessage("My daughters are my favorite beta testers! I love my daughters!!!")
+        guessButton.style.display = "none"
     } else collapseNumRange()
 
     if (triesRemaining <= 0 && !gameWon) {
@@ -76,7 +80,6 @@ function guessNumber() {
         guessInput.setAttribute("max", maxNumber)
     }
 }
-
 
 function resetVariables() {
 
@@ -103,11 +106,17 @@ function isInRange() {
     return false
 }
 
+/*
 function insertSpecialMessage(specialMessage) {
     let p = document.createElement("p")
     p.innerHTML = specialMessage;
     p.setAttribute("id", "specialMessage")
-    document.body.append(p)
+    game.append(p)
 }
+*/
 
 startGame()
+
+
+//var game = document.getElementById("game")
+
