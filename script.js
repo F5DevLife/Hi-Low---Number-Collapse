@@ -61,6 +61,7 @@ function guessNumber() {
     if (guessedNumber == randomNumber) {
         message.innerText = `You won! It took you only ${guessCount} guesses.`
         gameWon = true
+        insertSpecialMessage("My daughters are my favorite beta testers! I love my daughters!!!")
     } else collapseNumRange()
 
     if (triesRemaining <= 0 && !gameWon) {
@@ -100,6 +101,13 @@ function isInRange() {
         return true
     }
     return false
+}
+
+function insertSpecialMessage(specialMessage) {
+    let p = document.createElement("p")
+    p.innerHTML = specialMessage;
+    p.setAttribute("id", "specialMessage")
+    document.body.append(p)
 }
 
 startGame()
