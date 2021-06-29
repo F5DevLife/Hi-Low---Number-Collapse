@@ -70,16 +70,17 @@ function guessNumber() {
 
     if (triesRemaining <= 0 && !gameWon) {
         message.innerText = `You lost. You could not guess the number within ${MAXTRIES} tries.`
+        guessButton.style.display = "none"
         gameOver = true
-        return
     }
 
-    if (!gameWon) {
+    if (!gameWon && !gameOver) {
         message.innerText = `Guess a number between ${minNumber} and ${maxNumber}. You have ${triesRemaining} tries remaining.`
         guessInput.setAttribute("min", minNumber)
         guessInput.setAttribute("max", maxNumber)
     }
 }
+
 
 function resetVariables() {
 
