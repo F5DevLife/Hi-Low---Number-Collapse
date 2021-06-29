@@ -23,6 +23,21 @@ window.addEventListener("keydown", function (event) {
     if (event.keyCode == "13") { guessNumber() }
 })
 
+function startGame() {
+    minNumber = 1
+    maxNumber = 100
+    guessInput.setAttribute("min", minNumber)
+    guessInput.setAttribute("max", maxNumber)
+    guessInput.value = ""
+    numbersGuessed = []
+    guessCount = 0
+    getRandomNum()
+    message.innerText = "Guess a number between 1 and 100."
+    gameWon = false
+    gameOver = false
+    triesRemaining = MAXTRIES
+}
+
 function guessNumber() {
     if (gameWon || gameOver) return
 
@@ -61,20 +76,6 @@ function guessNumber() {
     }
 }
 
-function startGame() {
-    minNumber = 1
-    maxNumber = 100
-    guessInput.setAttribute("min", minNumber)
-    guessInput.setAttribute("max", maxNumber)
-    guessInput.value = ""
-    numbersGuessed = []
-    guessCount = 0
-    getRandomNum()
-    message.innerText = "Guess a number between 1 and 100."
-    gameWon = false
-    gameOver = false
-    triesRemaining = MAXTRIES
-}
 
 function resetVariables() {
 
