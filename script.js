@@ -24,6 +24,7 @@ window.addEventListener("keydown", function (event) {
     if (event.keyCode == "13") { guessNumber() }
 })
 
+
 function startGame() {
     minNumber = 1
     maxNumber = 100
@@ -81,7 +82,7 @@ function guessNumber() {
     }
 }
 
-
+//May use to simply (re)startGame function
 function resetVariables() {
 
 }
@@ -118,6 +119,4 @@ function insertSpecialMessage(specialMessage) {
 
 startGame()
 
-
 //var game = document.getElementById("game")
-
