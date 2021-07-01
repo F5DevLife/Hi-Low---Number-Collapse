@@ -14,7 +14,7 @@ var gameOver = false
 var numbersGuessed = []
 var guessCount = 0
 const MAXTRIES = 10
-var triesRemaining = MAXTRIES
+//var triesRemaining = MAXTRIES
 
 
 //Event Listeners
@@ -38,7 +38,7 @@ function startGame() {
     document.getElementById("specialMessage").innerText = ""
     gameWon = false
     gameOver = false
-    triesRemaining = MAXTRIES
+    var triesRemaining = MAXTRIES
     guessButton.style.display = "initial"
 }
 
