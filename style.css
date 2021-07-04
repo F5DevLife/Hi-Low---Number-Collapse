@@ -5,7 +5,8 @@
 }
 
 body {
-    background-color: #e7dfce
+    background-color: var(--creamy);
+    user-select: none;
 }
 
 main {
@@ -21,12 +22,13 @@ main {
 
 input {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
+    color: var(--deepblue)
 }
 
 button {
     background-color: var(--deepblue);
-    color: #e7dfce;
+    color: var(--creamy);
     height: 25px;
     width: 75px;
 }
