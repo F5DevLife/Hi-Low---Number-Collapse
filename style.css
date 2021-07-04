@@ -1,12 +1,36 @@
+:root {
+    --lighterblue: rgba(50, 75, 125, .75);
+    --deepblue: rgb(44, 66, 99);
+    --creamy: #e7dfce;
+}
+
 body {
     background-color: #e7dfce
 }
 
+main {
+
+    border: 5px double var(--deepblue);
+    padding: 5px 25px;
+    position: absolute;
+    top: 50%;
+    left:  50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+input {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
 button {
-    background-color: rgb(44, 66, 99);
-    color: #e7dfce
+    background-color: var(--deepblue);
+    color: #e7dfce;
+    height: 25px;
+    width: 75px;
 }
 
 button:active{
-    background-color: rgba(50, 75, 125, .75);
+    background-color: var(--lighterblue);
 }
