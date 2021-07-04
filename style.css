@@ -12,6 +12,7 @@ body {
 main {
     //height: 300px;
     //width: 350px;
+    width: 15rem;
     border: 5px double var(--deepblue);
     padding: 5px 25px;
     position: absolute;
