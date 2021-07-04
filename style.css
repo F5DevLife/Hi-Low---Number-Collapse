@@ -24,7 +24,9 @@ main {
 input {
     text-align: center;
     margin-bottom: 1rem;
-    color: var(--deepblue)
+    color: var(--deepblue);
+    height: 20px;
+    width: 70px;
 }
 
 .button-container {
@@ -33,7 +35,7 @@ input {
     //background-color: red;
     position: relative;
     left: 50%;
-    transform: translateX(-50%)
+    transform: translateX(-50%);
 }
 
 button {
