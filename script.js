@@ -1,5 +1,6 @@
 const QS = (q) => document.querySelector(q)
 
+// Declare global variables
 var message = QS("#message")
 var specialMessage = QS("#specialMessage")
 const guessInput = QS("#guessInput")
@@ -14,16 +15,13 @@ var gameOver = false
 var numbersGuessed = []
 var guessCount = 0
 const MAXTRIES = 10
-//var triesRemaining = MAXTRIES
 
-
-//Event Listeners
+// Set Event Listeners
 guessButton.addEventListener("click", guessNumber)
 restartButton.addEventListener("click", startGame)
 window.addEventListener("keydown", function (event) {
     if (event.keyCode == "13") { guessNumber() }
 })
-
 
 function startGame() {
     minNumber = 1
