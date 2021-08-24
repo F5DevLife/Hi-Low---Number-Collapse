@@ -6,14 +6,14 @@ var specialMessage = QS("#specialMessage")
 const guessInput = QS("#guessInput")
 const guessButton = QS("#guessButton")
 const restartButton = QS("#restartButton")
-var minNumber = 1
-var maxNumber = 100
+var minNumber
+var maxNumber
 var randomNumber
 var guessedNumber
 var gameWon = false
 var gameOver = false
 var numbersGuessed = []
-var guessCount = 0
+var guessCount
 const MAXTRIES = 10
 
 // Set Event Listeners
