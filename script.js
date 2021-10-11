@@ -1,14 +1,14 @@
 const QS = (q) => document.querySelector(q)
 
 // Declare global variables
-var message = QS("#message")
+const message = QS("#message")
 var specialMessage = QS("#specialMessage")
 const guessInput = QS("#guessInput")
 const guessButton = QS("#guessButton")
 const restartButton = QS("#restartButton")
 var minNumber
 var maxNumber
-var randomNumber
+var winningNumber
 var guessedNumber
 var gameWon = false
 var gameOver = false
@@ -31,9 +31,9 @@ function startGame() {
     guessInput.value = ""
     numbersGuessed = []
     guessCount = 0
-    getRandomNum()
+    winningNumber = getRandomNum()
     message.innerText = "Guess a number between 1 and 100."
-    document.getElementById("specialMessage").innerText = ""
+    document.getElementById("specialMessage").innerText = `Guess the number within ${MAXTRIES} attempts.`
     gameWon = false
     gameOver = false
     var triesRemaining = MAXTRIES
@@ -60,7 +60,7 @@ function guessNumber() {
     guessCount++
     triesRemaining = MAXTRIES - guessCount
 
-    if (guessedNumber == randomNumber) {
+    if (guessedNumber == winningNumber) {
         message.innerText = `You won! It took you only ${guessCount} guesses.`
         specialMessage.innerText = "My daughters are my favorite beta testers! I love my daughters!!!"
         gameWon = true
@@ -85,18 +85,10 @@ function resetVariables() {
 
 }
 
-const getRandomNum = () => {
-    randomNumber = Math.ceil(Math.random() * 100)
+function getRandomNum() {
+    let randomNumber = Math.ceil(Math.random() * 100)
     console.log(`Random Number:  ${randomNumber}`)
-}
-
-const collapseNumRange = () => {
-    if (guessedNumber >= minNumber && guessedNumber < randomNumber) {
-        minNumber = guessedNumber
-    }
-    else {
-        maxNumber = guessedNumber
-    }
+    return randomNumber
 }
 
 function isInRange() {
@@ -104,6 +96,15 @@ function isInRange() {
         return true
     }
     return false
+}
+
+const collapseNumRange = () => {
+    if (guessedNumber >= minNumber && guessedNumber < winningNumber) {
+        minNumber = guessedNumber
+    }
+    else {
+        maxNumber = guessedNumber
+    }
 }
 
 /*
