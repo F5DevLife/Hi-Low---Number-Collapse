@@ -2,6 +2,7 @@
     --lighterblue: rgba(50, 75, 125, .75);
     --deepblue: rgb(44, 66, 99);
     --creamy: #e7dfce;
+    --darkred:  rgb(190, 0, 50);
 }
 
 body {
@@ -40,7 +41,7 @@ input {
 }
 
 button {
-    background-color: var(--deepblue);
+    background-color: var(--darkred);
     color: var(--creamy);
     height: 25px;
     width: 75px;

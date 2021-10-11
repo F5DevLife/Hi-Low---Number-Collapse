@@ -33,7 +33,7 @@ function startGame() {
     guessCount = 0
     winningNumber = getRandomNum()
     message.innerText = "Guess a number between 1 and 100."
-    document.getElementById("specialMessage").innerText = `Guess the number within ${MAXTRIES} attempts.`
+    document.getElementById("specialMessage").innerText = `Guess the number within ${MAXTRIES} tries.`
     gameWon = false
     gameOver = false
     var triesRemaining = MAXTRIES
@@ -47,7 +47,7 @@ function guessNumber() {
     guessInput.value = ""
 
     if (!isInRange()) {
-        message.innerText = `Make sure you guess a number between ${minNumber} and ${maxNumber}.`
+        message.innerHTML = `Guess a number between <b>${minNumber}</b> and <b>${maxNumber}</b>.`
         return
     }
 
@@ -74,7 +74,8 @@ function guessNumber() {
     }
 
     if (!gameWon && !gameOver) {
-        message.innerText = `Guess a number between ${minNumber} and ${maxNumber}. You have ${triesRemaining} tries remaining.`
+        message.innerHTML = `Guess a number between ${minNumber} and ${maxNumber}.
+                            </br>You have <i>${triesRemaining}</i> tries remaining.`
         guessInput.setAttribute("min", minNumber)
         guessInput.setAttribute("max", maxNumber)
     }
