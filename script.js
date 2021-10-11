@@ -61,15 +61,16 @@ function guessNumber() {
     triesRemaining = MAXTRIES - guessCount
 
     if (guessedNumber == winningNumber) {
-        message.innerText = `You won! It took you only ${guessCount} guesses.`
-        specialMessage.innerText = "My daughters are my favorite beta testers! I love my daughters!!!"
+        message.innerHTML = `<b>You won!</b> It took you only ${guessCount} guesses.`
+        specialMessage.innerText = `The winning number was ${winningNumber}.`
         gameWon = true
         guessButton.style.display = "none"
     } else collapseNumRange()
 
     if (triesRemaining <= 0 && !gameWon) {
-        message.innerText = `You lost. You could not guess the number within ${MAXTRIES} tries.`
+        message.innerHTML = `<b>You lost.</b></br>You could not guess the number within ${MAXTRIES} tries.`
         guessButton.style.display = "none"
+        specialMessage.innerText = `The number was ${winningNumber}.`
         gameOver = true
     }
 
