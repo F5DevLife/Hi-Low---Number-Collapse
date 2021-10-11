@@ -37,7 +37,7 @@ function startGame() {
     gameWon = false
     gameOver = false
     var triesRemaining = MAXTRIES
-    guessButton.style.display = "initial"
+    guessButton.style.visibility = "initial"
 }
 
 function guessNumber() {
@@ -64,12 +64,12 @@ function guessNumber() {
         message.innerHTML = `<b>You won!</b> It took you only ${guessCount} guesses.`
         specialMessage.innerText = `The winning number was ${winningNumber}.`
         gameWon = true
-        guessButton.style.display = "none"
+        guessButton.style.visibility = "hidden"
     } else collapseNumRange()
 
     if (triesRemaining <= 0 && !gameWon) {
         message.innerHTML = `<b>You lost.</b></br>You could not guess the number within ${MAXTRIES} tries.`
-        guessButton.style.display = "none"
+        guessButton.style.visibility = "hidden"
         specialMessage.innerText = `The number was ${winningNumber}.`
         gameOver = true
     }
