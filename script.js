@@ -52,7 +52,7 @@ function guessNumber() {
     }
 
     if (numbersGuessed.includes(guessedNumber)) {
-        message.innerText = `You already guessed ${guessedNumber}. Try another number.`
+        message.innerText = `You already guessed ${guessedNumber}.\n Try another number.`
         return
     }
 
@@ -61,7 +61,7 @@ function guessNumber() {
     triesRemaining = MAXTRIES - guessCount
 
     if (guessedNumber == winningNumber) {
-        message.innerHTML = `<b>You won!</b> It took you only ${guessCount} guesses.`
+        message.innerHTML = `<b>You won!</b>\n It took you only ${guessCount} guesses.`
         specialMessage.innerText = `The winning number was ${winningNumber}.`
         gameWon = true
         guessButton.style.visibility = "hidden"
