@@ -43,16 +43,24 @@ function startGame() {
 function guessNumber() {
     if (gameWon || gameOver) return
 
+    if (!guessInput.value || isNaN(guessInput.value)) {
+        message.innerHTML = `Guess a <b>number</b> between ${minNumber} and ${maxNumber}.`
+        console.log("Number wasn't guessed")
+        return
+    }
+
     guessedNumber = parseInt(guessInput.value)
     guessInput.value = ""
 
     if (!isInRange()) {
         message.innerHTML = `Guess a number between <b>${minNumber}</b> and <b>${maxNumber}</b>.`
+        console.log("Guess was out of range.")
         return
     }
 
     if (numbersGuessed.includes(guessedNumber)) {
-        message.innerText = `You already guessed ${guessedNumber}.\n Try another number.`
+        message.innerText = `You already guessed ${guessedNumber}.\n Try a number between ${minNumber} and ${maxNumber}.`
+        console.log("Guessed number was already tried.")
         return
     }
 
