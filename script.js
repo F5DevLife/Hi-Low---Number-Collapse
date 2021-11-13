@@ -1,5 +1,8 @@
 const QS = (q) => document.querySelector(q)
 
+const INITIALBORDERCOLOR = "rgb(44, 66, 99)"
+const BORDERERRORCOLOR = "rgb(190, 0, 50)"
+
 // Declare global variables
 const message = QS("#message")
 var specialMessage = QS("#specialMessage")
@@ -37,7 +40,8 @@ function startGame() {
     gameWon = false
     gameOver = false
     var triesRemaining = MAXTRIES
-    guessButton.style.visibility = "initial"
+    guessButton.style.visibility = "initial";
+    QS("#game").style.borderColor = INITIALBORDERCOLOR
 }
 
 function guessNumber() {
@@ -47,6 +51,7 @@ function guessNumber() {
         message.innerHTML = `Guess a <b>number</b> between ${minNumber} and ${maxNumber}.`
         console.log("Number wasn't guessed")
         guessInput.value = ""
+        QS("#game").style.borderColor = BORDERERRORCOLOR
         return
     }
 
@@ -55,16 +60,19 @@ function guessNumber() {
 
     if (!isInRange()) {
         message.innerHTML = `Guess a number between <b>${minNumber}</b> and <b>${maxNumber}</b>.`
+        QS("#game").style.borderColor = BORDERERRORCOLOR
         console.log("Guess was out of range.")
         return
     }
 
     if (numbersGuessed.includes(guessedNumber)) {
         message.innerText = `You already guessed ${guessedNumber}.\n Try a number between ${minNumber} and ${maxNumber}.`
+        QS("#game").style.borderColor = BORDERERRORCOLOR
         console.log("Guessed number was already tried.")
         return
     }
 
+    QS("#game").style.borderColor = INITIALBORDERCOLOR
     numbersGuessed.push(guessedNumber)
     guessCount++
     triesRemaining = MAXTRIES - guessCount
