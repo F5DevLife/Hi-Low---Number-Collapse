@@ -85,7 +85,7 @@ function guessNumber() {
     } else collapseNumRange()
 
     if (triesRemaining <= 0 && !gameWon) {
-        message.innerHTML = `<b>You lost.</b></br>You did not guess the number within ${MAXTRIES} tries.`
+        message.innerHTML = `<b style="color: ${BORDERERRORCOLOR}">You lost.</b></br>You did not guess the number within ${MAXTRIES} tries.`
         gameOver = true
         console.log("game lost")
     }
