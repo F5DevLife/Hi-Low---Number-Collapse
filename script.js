@@ -46,6 +46,7 @@ function guessNumber() {
     if (!guessInput.value || isNaN(guessInput.value)) {
         message.innerHTML = `Guess a <b>number</b> between ${minNumber} and ${maxNumber}.`
         console.log("Number wasn't guessed")
+        guessInput.value = ""
         return
     }
 
