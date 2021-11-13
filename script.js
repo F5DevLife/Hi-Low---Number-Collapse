@@ -81,14 +81,18 @@ function guessNumber() {
         message.innerHTML = `<b>You won!</b>\n It took you only ${guessCount} guesses.`
         specialMessage.innerText = `The winning number was ${winningNumber}.`
         gameWon = true
-        guessButton.style.visibility = "hidden"
+        console.log("game won")
     } else collapseNumRange()
 
     if (triesRemaining <= 0 && !gameWon) {
-        message.innerHTML = `<b>You lost.</b></br>You could not guess the number within ${MAXTRIES} tries.`
-        guessButton.style.visibility = "hidden"
-        specialMessage.innerText = `The number was ${winningNumber}.`
+        message.innerHTML = `<b>You lost.</b></br>You did not guess the number within ${MAXTRIES} tries.`
         gameOver = true
+        console.log("game lost")
+    }
+
+    if (gameWon || gameOver) {
+        specialMessage.innerText = `The number was ${winningNumber}.`
+        guessButton.style.visibility = "hidden"
     }
 
     if (!gameWon && !gameOver) {
@@ -99,7 +103,7 @@ function guessNumber() {
     }
 }
 
-//May use to simply (re)startGame function
+//May use to simplify (re)startGame function
 function resetVariables() {
 
 }
