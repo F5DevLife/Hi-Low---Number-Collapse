@@ -1,5 +1,5 @@
 :root {
-    --lighterblue: rgba(50, 75, 125, .75);
+    --lighterblue: rgba(50, 75, 125, .5);
     --deepblue: rgb(44, 66, 99);
     --creamy: #e7dfce;
     --darkred:  rgb(190, 0, 50);
@@ -50,7 +50,8 @@ input {
     color: var(--deepblue);
     height: 20px;
     width: 70px;
-    border: 2px solid var(--deepblue)
+    border: 2px solid var(--deepblue);
+    outline: none;
 }
 
 .button-container {
@@ -61,20 +62,32 @@ input {
     transform: translateX(-50%);
 }
 
-button {
-    background-color: var(--darkred);
+.btn {
     color: var(--creamy);
     height: 25px;
     width: 75px;
+    margin-bottom: 2.5px;
+    border: none;
 }
 
-button:hover {
-    background-color: var(--deepblue)
+.btn:hover {
+    //letter-spacing: .5px;
+    border-left: 3px double black;
+    border-right: 3px double black;
+    opacity: .9;
 }
 
-button:active{
-    background-color: var(--lighterblue);
-    font-weight: bold;
+#guessButton {
+    background-color: var(--darkred);
+}
+
+#restartButton {
+    background-color: var(--deepblue);
+}
+
+.btn:active{
+    border-left: 3px solid black;
+    border-right: 3px solid black;
 }
 
 p {
