@@ -44,7 +44,7 @@ function startGame() {
     QS("#game").style.borderColor = DARKBLUE
     restartButton.style.visibility = "hidden"
     restartButton.style.backgroundColor = DARKBLUE
-    console.log("--new game started--")
+    console.log("\n\n--new game started--\n")
     winningNumber = getRandomNum()    
 }
 
