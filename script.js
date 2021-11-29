@@ -32,6 +32,7 @@ function startGame() {
     maxNumber = 100
     guessInput.setAttribute("min", minNumber)
     guessInput.setAttribute("max", maxNumber)
+    guessInput.disabled = false
     guessInput.value = ""
     numbersGuessed = []
     guessCount = 0
@@ -102,6 +103,7 @@ function guessNumber() {
 
     if (gameWon || gameOver) {
         specialMessage.innerText = `The number was ${winningNumber}.`
+        guessInput.disabled = true
         guessButton.style.visibility = "hidden"
         restartButton.style.backgroundColor = DARKRED
 
