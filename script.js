@@ -35,7 +35,6 @@ function startGame() {
     guessInput.value = ""
     numbersGuessed = []
     guessCount = 0
-    winningNumber = getRandomNum()
     message.innerText = "Guess a number between 1 and 100."
     specialMessage.innerText = `Guess the number within ${MAXTRIES} tries.`
     gameWon = false
@@ -45,6 +44,8 @@ function startGame() {
     QS("#game").style.borderColor = DARKBLUE
     restartButton.style.visibility = "hidden"
     restartButton.style.backgroundColor = DARKBLUE
+    console.log("--new game started--")
+    winningNumber = getRandomNum()    
 }
 
 function guessNumber() {
@@ -52,7 +53,7 @@ function guessNumber() {
 
     if (!guessInput.value || isNaN(guessInput.value)) {
         message.innerHTML = `Guess a <b>number</b> between ${minNumber} and ${maxNumber}.`
-        console.log("Number wasn't guessed")
+        console.log("A number wasn't guessed.")
         guessInput.value = ""
         QS("#game").style.borderColor = DARKRED
     
@@ -61,13 +62,14 @@ function guessNumber() {
 
     restartButton.style.visibility = "initial"
     guessedNumber = parseInt(guessInput.value)
+    console.log(`Guessed ${guessedNumber}`)
     guessInput.value = ""
 
     if (!isInRange()) {
         message.innerHTML = `Guess a number between <b>${minNumber}</b> and <b>${maxNumber}</b>.`
         QS("#game").style.borderColor = DARKRED
     
-        console.log("Guess was out of range.")
+        console.log("The guess was out of range.")
         return
     }
 
@@ -93,8 +95,7 @@ function guessNumber() {
     } else collapseNumRange()
 
     if (triesRemaining <= 0 && !gameWon) {
-        message.innerHTML = `<b style="color: ${DARKRED
-    }">You lost.</b></br>You did not guess the number in ${MAXTRIES} tries.`
+        message.innerHTML = `<b style="color: ${DARKRED}">You lost.</b></br>You did not guess the number in ${MAXTRIES} tries.`
         gameOver = true
         console.log("game lost")
     }
@@ -131,7 +132,7 @@ function resetVariables() {
 
 function getRandomNum() {
     let randomNumber = Math.ceil(Math.random() * 100)
-    console.log(`Random Number:  ${randomNumber}`)
+    console.log(`Random/Winning Number:  ${randomNumber}`)
     return randomNumber
 }
 
