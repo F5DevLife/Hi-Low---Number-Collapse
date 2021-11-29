@@ -43,6 +43,7 @@ function startGame() {
     var triesRemaining = MAXTRIES
     guessButton.style.visibility = "initial";
     QS("#game").style.borderColor = DARKBLUE
+    restartButton.style.visibility = "hidden"
     restartButton.style.backgroundColor = DARKBLUE
 }
 
@@ -58,6 +59,7 @@ function guessNumber() {
         return
     }
 
+    restartButton.style.visibility = "initial"
     guessedNumber = parseInt(guessInput.value)
     guessInput.value = ""
 
