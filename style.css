@@ -72,8 +72,8 @@ input {
 
 .btn:hover {
     //letter-spacing: .5px;
-    border-left: 3px double black;
-    border-right: 3px double black;
+    border-left: 3px solid var(--creamy);
+    border-right: 3px solid var(--creamy);
     opacity: .9;
 }
 
@@ -83,11 +83,6 @@ input {
 
 #restartButton {
     background-color: var(--deepblue);
-}
-
-.btn:active{
-    border-left: 3px solid black;
-    border-right: 3px solid black;
 }
 
 p {
