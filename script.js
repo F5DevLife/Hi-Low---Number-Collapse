@@ -83,7 +83,8 @@ function guessNumber() {
     triesRemaining = MAXTRIES - guessCount
 
     if (guessedNumber == winningNumber) {
-        message.innerHTML = `<b style="color: ${DARKBLUE}">You won!</b></br> It took you only ${guessCount} guesses.`
+        message.innerHTML = `<b style="color: ${DARKBLUE}">You won!</b></br> You got the answer in ${guessCount} guess`
+        message.innerHTML += (guessCount > 1 ? "es." : ".")
         specialMessage.innerText = `The winning number was ${winningNumber}.`
         gameWon = true
         console.log("game won")
@@ -91,7 +92,7 @@ function guessNumber() {
 
     if (triesRemaining <= 0 && !gameWon) {
         message.innerHTML = `<b style="color: ${DARKRED
-    }">You lost.</b></br>You did not guess the number within ${MAXTRIES} tries.`
+    }">You lost.</b></br>You did not guess the number in ${MAXTRIES} tries.`
         gameOver = true
         console.log("game lost")
     }
