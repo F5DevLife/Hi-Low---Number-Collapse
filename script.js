@@ -1,6 +1,7 @@
 const QS = (q) => document.querySelector(q)
 
-const DARKBLUE = "rgb(44, 66, 99)"
+const CREAMY =  "rgb(231, 223, 206)"
+const DEEPBLUE = "rgb(44, 66, 99)"
 const DARKRED = "rgb(190, 0, 50)"
 const LIGHTERBLUE = "rgba(50, 75, 125, .5)"
 
@@ -42,9 +43,9 @@ function startGame() {
     gameOver = false
     var triesRemaining = MAXTRIES
     guessButton.style.visibility = "initial";
-    QS("#game").style.borderColor = DARKBLUE
+    QS("#game").style.borderColor = DEEPBLUE
     restartButton.style.visibility = "hidden"
-    restartButton.style.backgroundColor = DARKBLUE
+    restartButton.style.backgroundColor = DEEPBLUE
     console.log("_____".repeat(10))
     console.log("\n--new game started--\n")
     winningNumber = getRandomNum()    
@@ -83,23 +84,23 @@ function guessNumber() {
         return
     }
 
-    QS("#game").style.borderColor = DARKBLUE
+    QS("#game").style.borderColor = DEEPBLUE
     numbersGuessed.push(guessedNumber)
     guessCount++
     triesRemaining = MAXTRIES - guessCount
 
     if (guessedNumber == winningNumber) {
-        message.innerHTML = `<b style="color: ${DARKBLUE}">You won!</b></br> You got the answer in ${guessCount} guess`
+        message.innerHTML = `<b style="color: ${DEEPBLUE}">You won!</b></br> You got the answer in ${guessCount} guess`
         message.innerHTML += (guessCount > 1 ? "es." : ".")
         specialMessage.innerText = `The winning number was ${winningNumber}.`
         gameWon = true
-        console.log("game won")
+        console.log(`Game won, ${guessCount} guesse(s)`)
     } else collapseNumRange()
 
     if (triesRemaining <= 0 && !gameWon) {
         message.innerHTML = `<b style="color: ${DARKRED}">You lost.</b></br>You did not guess the number in ${MAXTRIES} tries.`
         gameOver = true
-        console.log("game lost")
+        console.log("Game lost")
     }
 
     if (gameWon || gameOver) {
@@ -108,15 +109,15 @@ function guessNumber() {
         guessButton.style.visibility = "hidden"
         restartButton.style.backgroundColor = DARKRED
 
-        QS("#game").style.borderColor = LIGHTERBLUE
+        QS("#game").style.borderColor = (gameWon ? LIGHTERBLUE : DARKRED)
         setTimeout(() => {
-            QS("#game").style.borderColor = DARKBLUE
+            QS("#game").style.borderColor = DEEPBLUE
         }, 500)
         setTimeout(() => {
-            QS("#game").style.borderColor = LIGHTERBLUE
+            QS("#game").style.borderColor = (gameWon ? LIGHTERBLUE : DARKRED)
         }, 1000)
         setTimeout(() => {
-            QS("#game").style.borderColor = DARKBLUE
+            QS("#game").style.borderColor = DEEPBLUE
         }, 1500)
     }
 
