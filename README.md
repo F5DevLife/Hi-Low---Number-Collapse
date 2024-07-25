@@ -1,5 +1,8 @@
 # Hi-Low / Number-Collapse
 
+![image](https://github.com/user-attachments/assets/be905eb8-c62d-4eb0-bab9-fbae85548a87)
+
+
 ### Gameplay
 
 * The goal is to guess a number between 1 and 100.
